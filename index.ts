@@ -1,9 +1,6 @@
+import { SLEEP, TILE_SIZE } from './constants';
 import { Air, Box, FallingBox, FallingStone, Flux, Key1, Key2, Lock1, Lock2, Player, Stone, Unbreakable } from './tile';
 import type { Tile } from './types';
-
-const TILE_SIZE = 30;
-const FPS = 30;
-const SLEEP = 1000 / FPS;
 
 enum RawTile {
   AIR,
@@ -191,26 +188,9 @@ function draw() {
 function drawMap(g: CanvasRenderingContext2D) {
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
-      colorOfTile(g, x, y);
-      if (!map[y][x].isAir() && !map[y][x].isPlayer())
-        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+      map[y][x].draw(g, x, y);
     }
   }
-}
-
-function colorOfTile(g: CanvasRenderingContext2D, x: number, y: number) {
-  if (map[y][x].isFlux())
-      g.fillStyle = "#ccffcc";
-    else if (map[y][x].isUnbreakable())
-      g.fillStyle = "#999999";
-    else if (map[y][x].isStone || map[y][x].isFallingStone())
-      g.fillStyle = "#0000cc";
-    else if (map[y][x].isBox() || map[y][x].isFallingBox())
-      g.fillStyle = "#8b4513";
-    else if (map[y][x].isKey1() || map[y][x].isLock1())
-      g.fillStyle = "#ffcc00";
-    else if (map[y][x].isKey2() || map[y][x].isLock2())
-      g.fillStyle = "#00ccff";
 }
 
 function drawPlayer(g: CanvasRenderingContext2D) {

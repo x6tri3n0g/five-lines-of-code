@@ -11,4 +11,5 @@ export interface Tile {
   isKey2(): boolean;
   isLock1(): boolean;
   isLock2(): boolean;
+  draw(g: CanvasRenderingContext2D, x: number, y: number): void;
 }

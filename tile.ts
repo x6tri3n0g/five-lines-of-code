@@ -1,3 +1,4 @@
+import { TILE_SIZE } from './constants';
 import type { Tile } from './types';
 
 export class Air implements Tile {
@@ -13,6 +14,7 @@ export class Air implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {}
 }
 
 export class Flux implements Tile {
@@ -28,6 +30,10 @@ export class Flux implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = '#ccffcc';
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Unbreakable implements Tile {
@@ -43,6 +49,10 @@ export class Unbreakable implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = '#999999' ;
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Player implements Tile {
@@ -58,6 +68,7 @@ export class Player implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {}
 }
 
 export class Stone implements Tile {
@@ -73,6 +84,10 @@ export class Stone implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#0000cc";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class FallingStone implements Tile {
@@ -88,6 +103,10 @@ export class FallingStone implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#0000cc";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Box implements Tile {
@@ -103,6 +122,10 @@ export class Box implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#8b4513";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class FallingBox implements Tile {
@@ -118,6 +141,10 @@ export class FallingBox implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#8b4513";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Key1 implements Tile {
@@ -133,6 +160,10 @@ export class Key1 implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#ffcc00";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Key2 implements Tile {
@@ -148,6 +179,10 @@ export class Key2 implements Tile {
   isKey2() { return true; }
   isLock1() { return false; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#00ccff";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Lock1 implements Tile {
@@ -163,6 +198,10 @@ export class Lock1 implements Tile {
   isKey2() { return false; }
   isLock1() { return true; }
   isLock2() { return false; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#ffcc00";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
 
 export class Lock2 implements Tile {
@@ -178,4 +217,8 @@ export class Lock2 implements Tile {
   isKey2() { return false; }
   isLock1() { return false; }
   isLock2() { return true; }
+  draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    g.fillStyle = "#00ccff";
+    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+  }
 }
